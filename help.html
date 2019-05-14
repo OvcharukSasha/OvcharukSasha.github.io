@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Емулятор машини Тюрынга</title>
+        <link rel="stylesheet" href="help.css"/>
+    </head>
+    <body>
+        <div class="wrapper">
+            <p>
+                <a href="#" onclick="history.back(); return false;">&larr; Вернутися до програми</a>
+            </p>
+
+            <h1>Емулятор машини Тюрінга</h1>
+
+          
+
+            <hr/>
+
+            
+
+            <p>Приклад 1 (заміна 0 на 1 і навпаки):</p>
+            <code>
+                00,&nbsp;,&lt;,rep<br/>
+                rep,0,1,mov&nbsp;&nbsp;<br/>rep,1,0,mov&nbsp;&nbsp;<br/>rep,&nbsp;,&gt;,fin&nbsp;&nbsp;# переписуємо поточну комірку<br/>
+                mov,0,&lt;,rep&nbsp;&nbsp;<br/>mov,1,&lt;,rep&nbsp;&nbsp;&nbsp;// рухаємося на крок вліво<br/>
+                fin,0,&gt;,fin&nbsp;&nbsp;<br/>fin,1,&gt;,fin&nbsp;&nbsp;<br/>fin,&nbsp;,#,fin&nbsp;&nbsp;# в кінці роботи переміщаємося в кінець стрічки
+            </code>
+             <br/>
+             <br/>
+
+   <hr/>
+
+            <p>Приклад 2 (Додавання чисел):
+                <br/>
+           
+            Приклад вхідної стрічки:      11111+11   &nbsp;&nbsp;&nbsp;    (5+2)              </p>
+            <code>
+                
+  0, ,&lt;,0<br/>
+
+    0,1, ,1<br/>
+
+    1, ,&lt;,2<br/>
+
+    2,1,&lt;,2<br/>
+
+    2,+,1,3<br/>
+
+    0,+, ,3<br/>
+
+    3,1,&gt;,3<br/>
+    3, ,1,fin<br/>
+
+    fin,1,&gt;,fin<br/>
+
+    fin, ,#,fin<br/>
+            </code>
+           </br>
+        <hr/>
+          <p>Приклад 3 (Обчислення предикату "x-парне"):
+                <br/>
+           
+            Приклад вхідної стрічки:      11111   &nbsp;&nbsp;&nbsp;    результат-' ' <br/>
+      <span style="padding-left: 175px;"> 111111&nbsp;&nbsp;&nbsp;    результат-'1'</span> </p>
+            <code>
+                
+
+    0, ,&lt;,1<br/>
+
+    1,1, ,2<br/>
+
+    2, ,&lt;,3<br/>
+
+    3,1, ,4<br/>
+
+    4, ,&lt;,5<br/>
+
+    5, ,1,6<br/>
+
+    6,1,&gt;,fin<br/>
+
+    5,1,1,1<br/>
+
+    3, ,#,fin<br/>
+
+    fin, ,#,fin<br/>
+
+            </code>
+           </br>
+        <hr/>
+        <p>Приклад 4 (Обчислення "|x-y|"):
+                <br/>
+           
+            Приклад вхідної стрічки:      11111-11   &nbsp;&nbsp;&nbsp;    результат-'111' <br/>
+      <span style="padding-left: 175px;"> 11-111111&nbsp;&nbsp;&nbsp;    результат-'1'</span> </p>
+            <code>
+                
+<br/>
+    0, ,<,0<br/>
+0,1, ,1<br/>
+1, ,<,2<br/>
+2,1,<,2<br/>
+2,-,<,2<br/>
+2, ,>,3<br/>
+3,1, ,4<br/>
+4, ,>,5<br/>
+5,1,>,5<br/>
+5,-,>,5<br/>
+5, , ,6<br/>
+6, ,<,0<br/>
+3,-,1,fin<br/>
+0,-, ,7<br/>
+7, ,<,8<br/>
+8,1,>,fin<br/>
+8, ,#,fin<br/>
+fin, ,#,fin<br/>
+fin,1,>,fin<br/>
+
+            </code>
+           </br>
+        <hr/>
+
+             <p>
+                <a href="#" onclick="history.back(); return false;">&larr; Вернутися до програми</a>
+            </p>
+        </div>
+    </body>
+</html>

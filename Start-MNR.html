@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+
+
+/* Style tab links */
+.tablink {
+  background-color: #4b6d6b;
+  color: #0d1859;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  position: fixed;
+ 
+}
+.button {
+  background-color: #4b6d6b; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.tabs{
+  position: fixed;
+}
+span{
+
+
+  font-size:14px
+}
+ .turing {
+    text-align: center; /* Выравнивание по центру */ 
+   }
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: black;
+  display: none;
+  padding: 100px 20px;
+  /*height: 100%;*/
+  background-color: #f7f7f7;
+}
+.moveTo{
+  margin-top: 30px;
+width: 33%;
+height: 100px;
+  background-color: #4b6d6b; 
+  color: #0d1859; 
+  border: 2px solid #78bab9;
+}
+
+.moveTo:hover {
+  background-color: #78bab9;
+  color: #0d1859;
+}
+
+
+#About {background-color: #f7f7f7;}
+</style>
+</head>
+<body>
+
+<button class="tablink" style="width: 34%;" onclick="window.location='Start.html'" >Головна</button>
+<button class="tablink" style="width: 33%; margin-left: 34%;" onclick="window.location='Start-MT.html'" >Машина Тюрінга</button>
+<button class="tablink" style="width: 33%; margin-left: 67%;" onclick="window.location='Start-MNR.html'" id="defaultOpen">МНР програма</button>
+<!-- <button class="tablink" onclick="openPage('About', this, '#78bab9')">About</button> -->
+
+
+
+
+
+
+<div id="About" class="tabcontent">
+  <h3>MNR</h3>
+  <p>Who we are and what we do.</p>
+</div>
+
+
+   
+</body>
+</html> 

@@ -1,0 +1,178 @@
+<html><head>
+  <meta charset="utf-8">
+  <title>Емулятор МНР</title>
+  <script type="text/javascript" src="nmr.js">
+
+  </script>
+
+  <style type="text/css">
+       body, html {
+      background-color: #f7f7f7;
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+    body, input, select, option {
+      font: bold 10pt Verdana;
+    }
+   .table td {
+    border:2px solid black;
+  }
+   :focus::-webkit-input-placeholder {
+    color:transparent; 
+  }
+   :focus::-moz-placeholder {
+    color:transparent; 
+  }
+   :focus::placeholder {
+    color:transparent; 
+  }
+   input:disabled { background: #F8F9F9; color:silver; }
+    .tablink {
+  
+  background-color: #4b6d6b;
+  color: #0d1859;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+position: fixed;
+  margin: 0;
+ 
+}
+.tablink:hover {
+  background-color: #777;
+}
+  </style>
+
+ </head>
+ <body onload="Initialization();">
+     <div style="padding-bottom: 70px;">
+<button class="tablink" style="width: 34%; margin-left: 0px;" onclick="window.location='Start.html#Home'" >Головна</button>
+<button class="tablink" style="width: 33%; margin-left: 34%; " onclick="window.location='Start.html#Turing'" >Машина Тюрінга</button>
+<button class="tablink" style="width: 33%; margin-left: 67%;background-color: #78bab9; " onclick="window.location='Start.html#MNR'">МНР програма</button>
+</div>
+ <form>
+   <table align="center" borwder="" style="border:0px solid black;border-collapse:collapse;" cellpadding="5">
+     <tbody><tr valign="top">
+       <td>
+         <table class="table" align="center" cellpadding="0" border="2" style="border:2px solid black;border-collapse:collapse;">
+           <tbody><tr align="center">
+             <td colspan="2" style="text-align:center;padding:5px;font-weight:bold;text-transform:uppercase;background:#78bab9;">Конструктор програми</td>
+           </tr>
+           <tr align="center">
+             <td style="width:130px;text-align:right;padding-right:20px;">Тип команди:</td>
+             <td align="left" style="width:100px;">
+               <select size="4" id="InstructionType" onchange="SetInstructionParameters()" style="width:100%;margin:0px;border:0px solid red;padding:3px;text-align:center;padsding-left:66px;">
+                 <option selected="">Z</option>
+                 <option>S</option>
+                 <option>T</option>
+                 <option>J</option>
+               </select>
+             </td>
+           </tr>
+           <tr align="center">
+             <td style="width:130px;text-align:right;padding-right:20px;">n:</td>
+             <td align="left"><input id="ValueN" style="min-width:120px;margin:0px;border:0px solid red;padding:3px 6px;text-align:center;" type="number" min="1" step="1" value="1"></td>
+           </tr>
+           <tr align="center">
+             <td style="width:130px;text-align:right;padding-right:20px;">m:</td>
+             <td align="left"><input disabled="" id="ValueM" style="min-width:120px;margin:0px;border:0px solid red;padding:3px 6px;text-align:center;" type="number" min="1" step="1" value="1"></td>
+           </tr>
+           <tr align="center">
+             <td style="width:130px;text-align:right;padding-right:20px;">q:</td>
+             <td align="left"><input disabled="" id="ValueQ" style="min-width:120px;margin:0px;border:0px solid red;padding:3px 6px;text-align:center;" type="number" min="1" step="1" value="1"></td>
+           </tr>
+           <tr align="center">
+             <td colspan="2"><input type="button" id="AddAboveButton" value="Вставити над поточною командою" onclick="AddAbove()" style="width:95%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr>
+           <tr align="center">
+             <td colspan="2"><input type="button" id="AddBelowButton" value="Вставити під поточною командою" onclick="AddBelow()" style="width:95%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr>
+         
+           <tr align="center">
+             <td colspan="2"><input type="button" id="RemoveCurrentButton" value="Видалити поточну команду" onclick="RemoveCurrentCommand()" style="width:95%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr>
+           <tr align="center">
+             <td colspan="2"><input type="button" id="ShowText" value="Показати текст коду програми" onclick="ShowProgram()" style="width:95%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr> 
+            <tr align="center">
+             <td colspan="2"><input type="button" id="ChangeCurrentButton" value="Замінити поточну програму" onclick="ChangeCurrentCommand() " style="width:95%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr> 
+            <tr align="center">
+             <td colspan="2"><input type="button" id="Examples" value="Відкрити приклади програм" onclick='location.href="help-MNR.html"' style="width:95%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr>
+
+           <tr align="center">
+             <td colspan="2"><input type="button" value="Очистити програму" onclick="ClearProgram();" style="width:95%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr>
+         </tbody></table>
+         <br>
+         <label><input type="checkbox" id="clicker" onchange="ShowHideArea();"><span>Використати готовий код програми</span></label>
+         <br><br>
+         <table id="TableCodeArea" class="table" width="313" align="center" cellpadding="0" border="2" style="visibility: hidden; border: 2px solid black; border-collapse: collapse;">
+           <tbody><tr align="center">
+             <td colspan="2"><textarea placeholder="Вставте Ваш код сюди..." id="CodeArea" rows="5" style="width:94%;margin:5px;border:1px solid black;padding:3px;"></textarea></td>
+           </tr>
+           <tr align="center">
+             <td colspan="2"><input type="button" value="Зчитати програму" onclick="ReadCode();" style="width:95%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr>
+           <tr align="center">
+             <td colspan="2"><input type="button" value="Відміна" onclick="document.getElementById('clicker').click();" style="width:95%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr>
+         </tbody></table>
+       </td>
+       <td>
+         <table class="table" align="center" width="150" cellpadding="0" border="2" style="border:2px solid black;border-collapse:collapse;">
+           <tbody><tr align="center">
+             <td style="text-align:center;padding:5px;font-weight:bold;text-transform:uppercase;background:#78bab9;">Програма</td>
+           </tr>
+           <tr align="center">
+             <td><select onchange="document.getElementById('ResultsArea').innerHTML='';" id="Program" size="2" width="100%" style="width:100%;padding:3px;"></select></td>
+           </tr>
+         </tbody></table>
+       </td>
+       <td>
+         <table width="130" class="table" align="center" cellpadding="0" border="2" style="border:2px solid black;border-collapse:collapse;">
+           <tbody><tr align="center">
+             <td colspan="2" style="text-align:center;padding:5px;font-weight:bold;text-transform:uppercase;background:#78bab9">Регістри</td>
+           </tr>
+           <script type="text/javascript">
+             var tmp="<tr align='center'>";
+             for(var i=1;i<=10;i++) 
+             {
+               tmp+="<td style='width:40px;text-align:center;padding:0 8px;'>R"+i+":</td>";
+               tmp+="<td align='left'><input id='R"+i+"' onChange='ChangeRegister();' style='width:60px;margin:0px;border:0px solid red;padding:3px 6px;text-align:center;' type='number' min='0' step='1' value='0'></td>";
+               tmp+="</tr>";
+             }
+             document.write(tmp);
+           </script>
+           <tr align="center">
+             <td colspan="2"><input type="button" id="ClearRegistersButton" value="Очистка" onclick="ClearRegisters()" style="width:90%;margin:5px;border:1px solid black;padding:3px;"></td>
+           </tr>
+         </tbody></table>
+         <input type="button" id="loadProgramButton" style="padding:5px;border:1px solid black;width:129px;margin-top:10px;" value="Завантажити" onclick="loadProgram();"><br>
+   <input type="button" id="makeStepButton" style="padding:5px;border:1px solid black;width:129px;margin-top:10px;" value="Виконати крок" onclick="makeStep();" disabled=""><br>
+   <input type="button" id="runProgramButton" style="padding:5px;border:1px solid black;width:129px;margin-top:10px;" value="Виконати все" onclick="runProgram();" disabled="">
+       </td>
+       <td widwth="650">
+         <table class="table" a2lign="center" widwth="90%" cellpadding="0" border="2" style="border:2px solid black;border-collapse:collapse;">
+           <tbody><tr align="center">
+             <td style="text-align:center;padding:5px;font-weight:bold;text-transform:uppercase;background:#78bab9;">Виконання програми</td>
+           </tr>
+           <tr align="center">
+             <td><div id="ResultsArea" style="overflow:scroll;min-width:550px;height:430px;mar3gin:5px;padding:5px;bo3rder:1px solid black;"></div></td>
+           </tr>
+         </tbody></table>
+       </td>
+     </tr>
+   </tbody></table>
+ </form> 
+ 
+
+<div style="text-align: center;"><div style="position:relative; top:0; margin-right:auto;margin-left:auto; z-index:99999">
+
+</div></div>
+</body></html>

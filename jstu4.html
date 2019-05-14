@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+   <link rel="stylesheet" href="jstu4.css"/> 
+        <script src="jquery-1.6.4.js"></script>
+        <script src="jquery-plugins.js"></script>
+        <script src="hotmilk.browser.jquery.js"></script>
+       <!--  <script src="save.js"></script> -->
+        <script src="i18n.js"></script>
+        <script src="tu4.js"></script>
+        <script src="ui.js"></script>
+
+    </head>
+    <body>
+       <div style="padding-bottom: 70px;">
+<button class="tablink" style="width: 34%; margin-left: 0px;" onclick="window.location='Start.html#Home'" >Головна</button>
+<button class="tablink" style="width: 33%; margin-left: 34%; background-color: #78bab9;" onclick="window.location='Start.html#Turing'" >Машина Тюрінга</button>
+<button class="tablink" style="width: 33%; margin-left: 67%; " onclick="window.location='Start.html#MNR'">МНР програма</button>
+</div>
+        <table align="center" borwder="" style="border:0px solid black;border-collapse:collapse; padding-top: 700px;" cellpadding="5">
+     <tbody class="tbody-first"><tr valign="top">
+       <td>
+         <table class="table" align="center" cellpadding="0" border="2" style="border:2px solid black;border-collapse:collapse;">
+           <tbody><tr align="center">
+             <td colspan="2" style="text-align:center;padding:5px;font-weight:bold;text-transform:uppercase;background:#78bab9;">Конструктор програми</td>
+           </tr>
+           <tr align="center">
+            <td colspan="2" align="center" style="width:130px; text-align:center; padding:20px 20px 20px 20px; font-weight:bold; font-size: 20px;">Kомандa:</td>
+           
+           </tr>
+           <tr align="center">
+             <td style="width:130px;text-align:left;padding:6px 6px 6px 6px;">Поточний стан:</td>
+             <td align="left"><input id="ValueQ" style="min-width:120px;margin:0px;border:0px solid red;padding:3px 6px;text-align:center;" type="text"  maxlength="3"></td>
+           </tr>
+           <tr align="center">
+             <td style="width:130px;text-align:left;padding:6px 6px 6px 6px;">Поточний символ:</td>
+             <td align="left"><input  id="ValueA" style="min-width:120px;margin:0px;border:0px solid red;padding:3px 6px;text-align:center;" type="text"  maxlength="2" value=" "></td>
+           </tr>
+          <tr align="center">
+             <td style="width:130px;text-align:left;padding:5px 5px 5px 5px;">Команда або символ який запишемо:</td>
+             <td align="left"><input  id="ValueV" style="min-width:120px;margin:0px;border:0px solid red;padding:3px 6px;text-align:center;" type="text"  maxlength="2" value=" "></td>
+           </tr>
+           <tr align="center">
+             <td style="width:130px;text-align:left;padding:5px 5px 5px 5px;">Новий стан:</td>
+             <td align="left"><input  id="ValueQQ" style="min-width:120px;margin:0px;border:0px solid red;padding:3px 6px;  text-align:center;" type="text"  maxlength="3"></td>
+           </tr>
+          
+           <tr align="center">
+                <td colspan="2"><input type="button"  value="Вставити команду" class="knopki" id="btn-add-command" href="#"  style="width:95%;margin:5px;border:1px solid black;padding:4px; "></td>
+            
+           </tr>
+            <tr align="center">
+                <td colspan="2"><input type="button"  value="Видалити команду" class="knopki" id="btn-delete-command" href="#"  style="width:95%;margin:5px;border:1px solid black;padding:4px; "></td>
+            
+           </tr>
+          
+        
+
+           <tr align="center">
+             <td colspan="2"><input type="button" value="Очистити програму" class="knopki" id="btn-clear" href="#" style="width:95%;margin:5px;border:1px solid black;padding:4px; "></td>
+           </tr>
+
+
+        
+             <td colspan="2" style="padding-left: 5px; padding-right: 1px;">
+                <input type="button" value="Відкрити приклади програм" class="knopki" id="btn-help"  onClick='location.href="help.html"' style="width:95%;margin:5px;border:1px solid black;padding:3px; padding-left: 10px; ">
+                
+          
+             </td>
+           </tr>
+         </tbody></table>
+
+         </td>
+          <td>
+         <table class="table" align="center" width="150" heigth="30" cellpadding="0" border="2" style="border:2px solid black;border-collapse:collapse;">
+           <tbody>
+            <tr align="center">
+             <td style="text-align:center;padding:5px;font-weight:bold;text-transform:uppercase;background:#78bab9;">Програма</td>
+           </tr>
+           <tr align="center">
+            <td style="text-align:center;padding:5px;font-weight:bold; "> 
+                <textarea class="wide-block mode-edit program" id="input-program"  height= "100"></textarea>
+            <div class="wide-block mode-run mode-error program" id="display-program"  height= "100"></div>
+        </td>
+            
+           </tr>
+         </tbody>
+     </table>
+ </td>
+
+<td>
+         <table class="table" align="center" width="600" heigth="300" cellpadding="0" border="2" style="border:2px solid black;border-collapse:collapse;">
+           <tbody>
+            <tr align="center">
+             <td style="text-align:center;padding:5px;font-weight:bold;text-transform:uppercase;background:#78bab9;">Реалізація програми</td>
+           </tr>
+           <tr align="center">
+            <td style="text-align:center;padding:5px;font-weight:bold;"> 
+                
+             <input class="wide-block mode-edit mode-error tape" id="input-tape" tabindex="1" style="padding:5px; font-size: xx-large; margin-top: 10px;"/>
+            <div class="wide-block mode-run tape" id="display-tape" style="padding:5px; font-size: xx-large; margin-top: 10px; margin-bottom: 10px;"></div>
+            <div align="center" style="padding:5px; ">
+               <span id="log"></span> 
+            </div>
+            <div align="center" class="controls"  style="padding:5px;">
+
+                <a class="button mode-edit" id="btn-start" href="#" align="center"></a>
+                <a class="button mode-edit" id="btn-totu4" href="#" align="center"></a>
+                <a class="button mode-run" id="btn-step" href="#" align="center"></a>
+                <a class="button mode-run" id="btn-quick" href="#" align="center"></a>
+                <a class="button mode-run mode-error" id="btn-edit" href="#" align="center"></a>
+                <a class="button mode-run" id="btn-unmark" href="#" align="center"></a>
+                
+            </div>
+        </td>
+            
+           </tr>
+         </tbody>
+     </table>
+ </td>
+
+
+</tr>
+</tbody>
+</table>
+  <div id="stats">&nbsp;</div>
+
+
+
+
+
+
+
+
+        
+    </body>
+
+
+
+
+
+</html>
